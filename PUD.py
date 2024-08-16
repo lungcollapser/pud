@@ -5,10 +5,7 @@ order_of_stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisd
 wiz_name = "Wizard"
 thief_name = "Thief"
 war_name = "Warrior"
-
-player = ""
-class_choice = ""
-yes_no = "Y", "y", "N", "n"
+yes_no = ""
 
 
 print("Welcome to PUD")
@@ -20,9 +17,14 @@ class_choice = input("What is your class?")
 
 while class_choice:
     if class_choice == wiz_name:
+        yes_no = input("A wizard? Are you sure? Type Y or N.")
+        if yes_no == "Y":
+            print("Excellent")
+        elif yes_no == "N":
+            print(class_list)
+            print("Type in your class.")
         break
     elif class_choice == war_name:
-        print(wiz)
         print("A warrior? Are you sure?")
         break
     elif class_choice == thief_name:
