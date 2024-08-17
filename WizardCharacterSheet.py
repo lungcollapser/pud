@@ -7,4 +7,4 @@ class Wizard:
         self.weapon_damage = weapon_damage
 
 
-wizard_sheet = Wizard({"Strength": 10, "Dexterity": 14, "Constitution": 12, "Intelligence": 20, "Wisdom": 16, "Charisma": 18}, 12, 7, "Quarterstaff")
+wizard_sheet = Wizard({"Strength": 10, "Dexterity": 14, "Constitution": 12, "Intelligence": 20, "Wisdom": 16, "Charisma": 18}, 12, 7, "Quarterstaff", "1d6")
