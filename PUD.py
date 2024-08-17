@@ -1,7 +1,8 @@
 import random
-import WizardCharacterSheet as WCS
+import WizardCharacterSheet
 
-wizard_sheet = WCS.wizard_sheet[{"Strength": 10, "Dexterity": 14, "Constitution": 12, "Intelligence": 20, "Wisdom": 16, "Charisma": 18}, 12, 7, "Quarterstaff", "1d6"]
+wiz = WizardCharacterSheet.Wizard
+
 class_list = ["Wizard", "Warrior", "Thief"]
 wiz_name = "Wizard"
 thief_name = "Thief"
@@ -14,8 +15,6 @@ player = input("What is your name?")
 print("...Very interesting.")
 print(class_list)
 class_choice = input("What is your class?")
-
-print(wizard_sheet)
 
 while class_choice:
     if class_choice == wiz_name:
