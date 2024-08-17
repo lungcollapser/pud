@@ -1,13 +1,16 @@
+import re
 import random
+import WarriorCharacterSheet
+import ThiefCharacterSheet
 import WizardCharacterSheet
-
 wiz = WizardCharacterSheet.Wizard
+thief = ThiefCharacterSheet.Thief
+war = WarriorCharacterSheet.Warrior
 
 class_list = ["Wizard", "Warrior", "Thief"]
 wiz_name = "Wizard"
 thief_name = "Thief"
 war_name = "Warrior"
-yes_no = " "
 
 
 print("Welcome to PUD")
@@ -18,7 +21,7 @@ class_choice = input("What is your class?")
 
 while class_choice:
     if class_choice == wiz_name:
-
+        print("Sheet:", wiz.wizard_sheet)
         yes_no = input("A wizard? Are you sure? Type Y or N.")
         if yes_no == "Y":
             print("Spell-casters do not last very long here")
@@ -27,7 +30,7 @@ while class_choice:
             print("Type in your class.")
         break
     elif class_choice == war_name:
-
+        print("Sheet:", war.warrior_sheet)
         yes_no = input("A warrior? Are you sure? Type Y or N.")
         if yes_no == "Y":
             print("Brute strength suits your demeanor")
@@ -36,7 +39,7 @@ while class_choice:
             print("Type in your class.")
         break
     elif class_choice == thief_name:
-
+        print("Stats:", thief.thief_sheet)
         yes_no = input("A thief? Are you sure? Type Y or N.")
         if yes_no == "Y":
             print("Hmmm.. Not all that surprising.")
