@@ -7,9 +7,9 @@ wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 
-wiz_pattern = re.compile("[Wizard]+$")
-thief_pattern = re.compile("[Thief]+$")
-war_pattern = re.compile("[Warrior]+$")
+wiz_pattern = re.compile(r"[Wizard]")
+thief_pattern = re.compile(r"[Thief]")
+war_pattern = re.compile(r"[Warrior]")
 
 class_list = ["Wizard", "Warrior", "Thief"]
 
