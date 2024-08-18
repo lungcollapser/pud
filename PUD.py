@@ -13,47 +13,41 @@ thief_name = "Thief"
 war_name = "Warrior"
 
 
-print("Welcome to PUD")
-player = input("What is your name?")
-print("...Very interesting.")
+print("welcome to PUD")
+player = input("what is your name?")
+print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
-class_choice = input("What is your class?")
 
-while class_choice:
+
+def choose_class():
+    class_choice = input("what is your class?")
     if class_choice == wiz_name:
-        print("Sheet:", wiz.wizard_sheet)
-        yes_no = input("A wizard? Are you sure? Type Y or N.")
+        print(wiz.wizard_sheet)
+        yes_no = input("are you sure? type Y or N")
         if yes_no == "Y":
-            print("Spell-casters do not last very long here")
-        elif yes_no == "N":
-            print(class_list)
-            print("Type in your class.")
-        break
+            print("spell-casters don't last long here.")
+        if yes_no == "N":
+            choose_class()
+        else:
+            choose_class()
     elif class_choice == war_name:
-        print("Sheet:", war.warrior_sheet)
-        yes_no = input("A warrior? Are you sure? Type Y or N.")
-        if yes_no == "Y":
-            print("Brute strength suits your demeanor")
-        elif yes_no == "N":
-
-            print("Type in your class.")
-        break
+        print(war.warrior_sheet)
+        yes_no2 = input("are you sure? type Y or N")
+        if yes_no2 == "Y":
+            print("brute strength suits you.")
+        elif yes_no2 == "N":
+            choose_class()
+        else:
+            choose_class()
     elif class_choice == thief_name:
-        print("Stats:", thief.thief_sheet)
-        yes_no = input("A thief? Are you sure? Type Y or N.")
-        if yes_no == "Y":
-            print("Hmmm.. Not all that surprising.")
-        elif yes_no == "N":
-            print(class_list)
-            print("Type in your class.")
-        break
-    else:
-        class_choice = input("Please type in one of the class names.")
-        continue
+        print(thief.thief_sheet)
+        yes_no3 = input("are you sure? type Y or N")
+        if yes_no3 == "Y":
+            print("don't go looking into my pockets.")
+        if yes_no3 == "N":
+            choose_class()
+        else:
+            choose_class()
 
-yes_no: str = input("All set? Type Y to start your adventure.")
-
-yes_no: str = input("You awake in a daze. The ceiling fan loudly swirling around your room. 'I am going to be late again."
-                    "letting Roman pressure me into excessive drinking?' You get out of your bed and look around your room."
-                    "It's not too terribly messy, but you could clean up. Your eyes fixate on the floor. What would you like"
-                    "to do?")
+choose_class()
+yes_no = input("are you ready to begin?")
