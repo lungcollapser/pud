@@ -7,10 +7,11 @@ wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 
+wiz_pattern = re.compile("[Wizard]+$")
+thief_pattern = re.compile("[Thief]+$")
+war_pattern = re.compile("[Warrior]+$")
+
 class_list = ["Wizard", "Warrior", "Thief"]
-wiz_name = "Wizard"
-thief_name = "Thief"
-war_name = "Warrior"
 
 
 print("welcome to PUD")
@@ -21,16 +22,16 @@ print(class_list)
 
 def choose_class():
     class_choice = input("what is your class?")
-    if class_choice == wiz_name:
+    if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
         yes_no = input("are you sure? type Y or N")
         if yes_no == "Y":
             print("spell-casters don't last long here.")
-        if yes_no == "N":
+        elif yes_no == "N":
             choose_class()
         else:
             choose_class()
-    elif class_choice == war_name:
+    elif re.search(war_pattern, class_choice):
         print(war.warrior_sheet)
         yes_no2 = input("are you sure? type Y or N")
         if yes_no2 == "Y":
@@ -39,15 +40,34 @@ def choose_class():
             choose_class()
         else:
             choose_class()
-    elif class_choice == thief_name:
+    elif re.search(thief_pattern, class_choice):
         print(thief.thief_sheet)
         yes_no3 = input("are you sure? type Y or N")
         if yes_no3 == "Y":
             print("don't go looking into my pockets.")
-        if yes_no3 == "N":
+        elif yes_no3 == "N":
             choose_class()
         else:
             choose_class()
 
+
 choose_class()
-yes_no = input("are you ready to begin?")
+
+
+def beginning():
+    print("yoyoyo bitch")
+
+
+def are_you_ready():
+    yes_no = input("are you ready to begin? type Y or N.")
+    if yes_no == "Y":
+        beginning()
+    elif yes_no == "N":
+        yes_no = input("Would you like to change your class?")
+        if yes_no == "Y":
+            choose_class()
+        if yes_no == "N":
+            are_you_ready()
+
+
+are_you_ready()
