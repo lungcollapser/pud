@@ -11,6 +11,7 @@ wiz_pattern = re.compile(r".*Wizard$")
 thief_pattern = re.compile(r".*Thief$")
 war_pattern = re.compile(r".*Warrior$")
 yes_pattern = re.compile(r"^.*yes")
+no_pattern = re.compile(r"^.*no")
 
 class_list = ["Wizard", "Warrior", "Thief"]
 
@@ -25,28 +26,28 @@ def choose_class():
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
-        yes_no = input("are you sure? type Y or N")
-        if yes_no == "Y":
+        yes_no = input("are you sure? yes or no?")
+        if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
-        elif yes_no == "N":
+        elif re.search(no_pattern, yes_no):
             choose_class()
         else:
             choose_class()
     elif re.search(war_pattern, class_choice):
         print(war.warrior_sheet)
-        yes_no2 = input("are you sure? type Y or N")
-        if yes_no2 == "Y":
+        yes_no = input("are you sure? yes or no?")
+        if re.search(yes_pattern, yes_no):
             print("brute strength suits you.")
-        elif yes_no2 == "N":
+        elif re.search(no_pattern, yes_no):
             choose_class()
         else:
             choose_class()
     elif re.search(thief_pattern, class_choice):
         print(thief.thief_sheet)
-        yes_no3 = input("are you sure? type Y or N")
-        if yes_no3 == "Y":
+        yes_no = input("are you sure? yes or no?")
+        if re.search(yes_pattern, yes_no):
             print("don't go looking into my pockets.")
-        elif yes_no3 == "N":
+        elif re.search(no_pattern, yes_no):
             choose_class()
         else:
             choose_class()
@@ -60,14 +61,14 @@ def beginning():
 
 
 def are_you_ready():
-    yes_no = input("are you ready to begin? type Y or N.")
-    if yes_no == "Y":
+    yes_no = input("are you ready to begin? yes or no?.")
+    if re.search(yes_pattern, yes_no):
         beginning()
-    elif yes_no == "N":
+    elif re.search(no_pattern, yes_no):
         yes_no = input("Would you like to change your class?")
-        if yes_no == "Y":
+        if re.search(yes_pattern, yes_no):
             choose_class()
-        if yes_no == "N":
+        if re.search(no_pattern, yes_no):
             are_you_ready()
 
 
