@@ -10,10 +10,6 @@ wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 
-royalty_intro = royaltyintro.royalty_intro()
-peasant_intro = peasantintro.peasant_intro()
-commoner_intro = commonerintro.commoner_intro()
-
 wiz_pattern = re.compile(r".*wizard$")
 thief_pattern = re.compile(r".*thief$")
 war_pattern = re.compile(r".*warrior$")
@@ -77,6 +73,7 @@ def which_path():
         yes_no = input("royalty? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("wealth is a shortcut to an early grave. watch your back.")
+            are_you_ready_royalty()
         elif re.search(no_pattern, yes_no):
             which_path()
         else:
@@ -85,6 +82,7 @@ def which_path():
         yes_no = input("peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("you'll be rolling in shit before you know it.")
+            are_you_ready_peasant()
         elif re.search(no_pattern, yes_no):
             which_path()
         else:
@@ -93,28 +91,63 @@ def which_path():
         yes_no = input("commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("ahhh, a perfectly normal and average life. how underwhelming.")
+            are_you_ready_commoner()
         elif re.search(no_pattern, yes_no):
             which_path()
         else:
             which_path()
 
 
-def are_you_ready():
+def are_you_ready_peasant():
     yes_no = input("are you ready to begin? type yes or no.")
     if re.search(yes_pattern, yes_no):
-        royalty_intro()
+        peasantintro.peasant_intro()
     elif re.search(no_pattern, yes_no):
         yes_no = input("would you like to change your class?")
         if re.search(yes_pattern, yes_no):
             choose_class()
-            are_you_ready()
+            are_you_ready_peasant()
         if re.search(no_pattern, yes_no):
             yes_no = input("would you like to change your path?")
             if re.search(yes_pattern, yes_no):
                 which_path()
             elif re.search(no_pattern, yes_no):
-                are_you_ready()
+                are_you_ready_peasant()
+
+
+def are_you_ready_commoner():
+    yes_no = input("are you ready to begin? type yes or no.")
+    if re.search(yes_pattern, yes_no):
+        commonerintro.commoner_intro()
+    elif re.search(no_pattern, yes_no):
+        yes_no = input("would you like to change your class?")
+        if re.search(yes_pattern, yes_no):
+            choose_class()
+            are_you_ready_commoner()
+        if re.search(no_pattern, yes_no):
+            yes_no = input("would you like to change your path?")
+            if re.search(yes_pattern, yes_no):
+                which_path()
+            elif re.search(no_pattern, yes_no):
+                are_you_ready_commoner()
+
+
+def are_you_ready_royalty():
+    yes_no = input("are you ready to begin? type yes or no.")
+    if re.search(yes_pattern, yes_no):
+        royaltyintro.royalty_intro()
+    elif re.search(no_pattern, yes_no):
+        yes_no = input("would you like to change your class?")
+        if re.search(yes_pattern, yes_no):
+            choose_class()
+            are_you_ready_royalty()
+        if re.search(no_pattern, yes_no):
+            yes_no = input("would you like to change your path?")
+            if re.search(yes_pattern, yes_no):
+                which_path()
+            elif re.search(no_pattern, yes_no):
+                are_you_ready_royalty()
 
 
 which_path()
-are_you_ready()
+
