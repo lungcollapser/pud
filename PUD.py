@@ -55,6 +55,8 @@ def choose_class():
             choose_class()
         else:
             choose_class()
+    else:
+        choose_class()
 
 
 choose_class()
@@ -92,6 +94,7 @@ def which_path():
             which_path()
         else:
             which_path()
+
 
 def are_you_ready():
     yes_no = input("are you ready to begin? type yes or no.")
