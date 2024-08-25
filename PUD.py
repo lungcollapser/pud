@@ -3,9 +3,16 @@ import random
 import WarriorCharacterSheet
 import ThiefCharacterSheet
 import WizardCharacterSheet
+import royaltyintro
+import peasantintro
+import commonerintro
 wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
+
+royalty_intro = royaltyintro.royalty_intro()
+peasant_intro = peasantintro.peasant_intro()
+commoner_intro = commonerintro.commoner_intro()
 
 wiz_pattern = re.compile(r".*wizard$")
 thief_pattern = re.compile(r".*thief$")
@@ -62,10 +69,6 @@ def choose_class():
 choose_class()
 
 
-def beginning():
-    print("yoyoyo")
-
-
 def which_path():
     print("now decide your path to start on. this will greatly alter your experience, so choose wisely.")
     print(path_list)
@@ -99,7 +102,7 @@ def which_path():
 def are_you_ready():
     yes_no = input("are you ready to begin? type yes or no.")
     if re.search(yes_pattern, yes_no):
-        beginning()
+        royalty_intro()
     elif re.search(no_pattern, yes_no):
         yes_no = input("would you like to change your class?")
         if re.search(yes_pattern, yes_no):
