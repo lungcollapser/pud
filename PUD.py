@@ -13,8 +13,8 @@ war = WarriorCharacterSheet.Warrior
 wiz_pattern = re.compile(r".*wizard$")
 thief_pattern = re.compile(r".*thief$")
 war_pattern = re.compile(r".*warrior$")
-yes_pattern = re.compile(r"^.*yes")
-no_pattern = re.compile(r"^.*no")
+yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)")
+no_pattern = re.compile(r"^.*[n|N]")
 
 royalty_pattern = re.compile(r"^.*royalty")
 peasant_pattern = re.compile(r"^.*peasant")

@@ -3,3 +3,4 @@ def royalty_intro():
     print("Your weapon sits idly by next to your bedside table.")
     print("The footsteps start echoing throughout the halls outside your room, ")
     print("getting closer and closer to your door.")
+
