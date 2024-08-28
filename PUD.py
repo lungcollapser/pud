@@ -13,8 +13,8 @@ war = WarriorCharacterSheet.Warrior
 wiz_pattern = re.compile(r"(?i).*wizard$")
 thief_pattern = re.compile(r"(?i).*thief$")
 war_pattern = re.compile(r"(?i).*warrior$")
-yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)")
-no_pattern = re.compile(r"(?i)^.*[n|N]")
+yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)|(y)")
+no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
@@ -28,7 +28,7 @@ player = input("what is your name?")
 print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
 
-
+# Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
@@ -64,13 +64,15 @@ def choose_class():
 
 choose_class()
 
+# Function to ask the player which path they would like to go down.
+
 
 def which_path():
     print("now decide your path to start on. this will greatly alter your experience, so choose wisely.")
     print(path_list)
     choose_path = input("")
     if re.search(royalty_pattern, choose_path):
-        yes_no = input("royalty? are you sure? type yes or no.")
+        yes_no = input("starting gold = 200. royalty? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("wealth is a shortcut to an early grave. watch your back.")
             are_you_ready_royalty()
@@ -79,7 +81,7 @@ def which_path():
         else:
             which_path()
     if re.search(peasant_pattern, choose_path):
-        yes_no = input("peasant? are you sure? type yes or no.")
+        yes_no = input("starting gold = 5. peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("you'll be rolling in shit before you know it.")
             are_you_ready_peasant()
@@ -88,7 +90,7 @@ def which_path():
         else:
             which_path()
     if re.search(commoner_pattern, choose_path):
-        yes_no = input("commoner? are you sure? type yes or no.")
+        yes_no = input("starting gold = 25. commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("ahhh, a perfectly normal and average life. how underwhelming.")
             are_you_ready_commoner()
@@ -96,6 +98,8 @@ def which_path():
             which_path()
         else:
             which_path()
+
+# List of function paths intros. Need to fix and find a way to put on separate file at some point.
 
 
 def are_you_ready_peasant():
@@ -151,3 +155,5 @@ def are_you_ready_royalty():
 
 which_path()
 
+def check_stats():
+    
