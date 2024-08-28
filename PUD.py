@@ -83,6 +83,9 @@ def which_path():
             which_path()
         else:
             which_path()
+    elif choose_path != re.search(royalty_pattern, choose_path):
+        which_path()
+
     if re.search(peasant_pattern, choose_path):
         yes_no = input("starting gold = 5. peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
@@ -92,6 +95,8 @@ def which_path():
             which_path()
         else:
             which_path()
+    elif choose_path != re.search(peasant_pattern, choose_path):
+        which_path()
     if re.search(commoner_pattern, choose_path):
         yes_no = input("starting gold = 25. commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
@@ -101,7 +106,10 @@ def which_path():
             which_path()
         else:
             which_path()
+    elif choose_path != re.search(commoner_pattern, choose_path):
+        which_path()
 
+which_path()
 # List of function paths intros. Need to fix and find a way to put on separate file at some point.
 
 
@@ -156,19 +164,20 @@ def are_you_ready_royalty():
                 are_you_ready_royalty()
 
 
-which_path()
-
 
 def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
-    if action == input("1"):
+    if action == "1":
         print(wiz.wizard_sheet)
-    if action == input("2"):
+        player_ui()
+    if action == "2":
         print("royalty")
-    if action == input("3"):
+        player_ui()
+    if action == "3":
         print("quarterstaff")
-    if action == input("4"):
+        player_ui()
+    if action == "4":
         quit()
 
 
