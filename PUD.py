@@ -6,9 +6,12 @@ import WizardCharacterSheet
 import royaltyintro
 import peasantintro
 import commonerintro
+import playerui
 wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
+play_ui = playerui.PlayerUi
+
 
 wiz_pattern = re.compile(r"(?i).*wizard$")
 thief_pattern = re.compile(r"(?i).*thief$")
@@ -155,5 +158,8 @@ def are_you_ready_royalty():
 
 which_path()
 
-def check_stats():
-    
+print(play_ui.player_ui)
+action = input("what would you like to do?")
+
+
+
