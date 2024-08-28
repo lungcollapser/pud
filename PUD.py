@@ -10,15 +10,15 @@ wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 
-wiz_pattern = re.compile(r".*wizard$")
-thief_pattern = re.compile(r".*thief$")
-war_pattern = re.compile(r".*warrior$")
+wiz_pattern = re.compile(r"(?i).*wizard$")
+thief_pattern = re.compile(r"(?i).*thief$")
+war_pattern = re.compile(r"(?i).*warrior$")
 yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)")
-no_pattern = re.compile(r"^.*[n|N]")
+no_pattern = re.compile(r"(?i)^.*[n|N]")
 
-royalty_pattern = re.compile(r"^.*royalty")
-peasant_pattern = re.compile(r"^.*peasant")
-commoner_pattern = re.compile(r"^.*commoner")
+royalty_pattern = re.compile(r"(?i)^.*royalty")
+peasant_pattern = re.compile(r"(?i)^.*peasant")
+commoner_pattern = re.compile(r"(?i)^.*commoner")
 
 class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
