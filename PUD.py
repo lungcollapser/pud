@@ -158,8 +158,21 @@ def are_you_ready_royalty():
 
 which_path()
 
-print(play_ui.player_ui)
-action = input("what would you like to do?")
+
+def player_ui():
+    print(play_ui.player_ui)
+    action = input("what would you like to do?")
+    if action == input("1"):
+        print(wiz.wizard_sheet)
+    if action == input("2"):
+        print("royalty")
+    if action == input("3"):
+        print("quarterstaff")
+    if action == input("4"):
+        quit()
+
+
+player_ui()
 
 
 
