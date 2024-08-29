@@ -7,10 +7,12 @@ import royaltyintro
 import peasantintro
 import commonerintro
 import playerui
+import RulesandHandbook
 wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 play_ui = playerui.PlayerUi
+rules = RulesandHandbook.Rules
 
 
 wiz_pattern = re.compile(r"(?i).*wizard$")
@@ -26,10 +28,14 @@ commoner_pattern = re.compile(r"(?i)^.*commoner")
 class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
-print("welcome to PUD")
+print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
-print("hmmmm", player, "huh?...very interesting.")
+if player == "rules":
+    print(RulesandHandbook.Rules)
+else:
+    print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
+
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
@@ -158,7 +164,6 @@ def which_path():
 
 which_path()
 # List of function paths intros. Need to fix and find a way to put on separate file at some point.
-
 
 
 def player_ui():
