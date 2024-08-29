@@ -28,6 +28,15 @@ commoner_pattern = re.compile(r"(?i)^.*commoner")
 class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
+
+def make_file():
+    filename = input("filename: ")
+    with open(filename, "w") as f:
+        f.write(input())
+
+
+make_file()
+
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
 if player == "rules":
@@ -127,6 +136,8 @@ def are_you_ready_commoner():
                 are_you_ready_commoner()
 
 # Function to ask the player which path they would like to go down.
+
+
 def which_path():
     print("now decide your path to start on. this will greatly alter your experience, so choose wisely.")
     print(path_list)
