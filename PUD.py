@@ -29,31 +29,30 @@ class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
 
-player_filename = input("filename: ")
+player_filename = input("Player Filename: ")
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
 with open(player_filename, "w") as file:
     file.write(player)
-if player == "rules":
-    print(RulesandHandbook.Rules)
-else:
-    print("hmmmm", player, "huh?...very interesting.")
+    if player == "rules":
+        print(RulesandHandbook.Rules)
+    else:
+        print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
 
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
-    def combine_writing():
-        "".join(player)
+    player_class_filename = input("Class Filename: ")
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
-            with open(player_filename, "w") as wizard_file:
+            with open(player_class_filename, "w") as wizard_file:
                 wizard_file.write("Class = Wizard")
-                combine_writing()
+                wizard_file.write(wiz.wizard_sheet)
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -63,9 +62,8 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("another hero with a sword and shield in line for his death.")
-            with open(player_filename, "w") as warrior_file:
+            with open(player_class_filename, "w") as warrior_file:
                 warrior_file.write("Class = Warrior")
-                combine_writing()
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -75,9 +73,8 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("don't go looking into my pockets.")
-            with open(player_filename, "w") as thief_file:
+            with open(player_class_filename, "w") as thief_file:
                 thief_file.write("Class = Thief")
-                combine_writing()
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
