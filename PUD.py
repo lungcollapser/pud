@@ -30,7 +30,7 @@ class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
 
-player_filename = input("Player Filename: ")
+player_filename = "Player Name"
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
 with open(player_filename, "w") as file:
@@ -44,7 +44,7 @@ print(class_list)
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
-    player_class_filename = input("Class/Equipment Filename: ")
+    player_class_filename = "Player Class/Equipment"
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
@@ -52,9 +52,9 @@ def choose_class():
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
             with open(player_class_filename, "w") as wizard_file:
-                wiz_class_file = wizard_file.write("Class = Wizard" "          ")
-                wiz_equipment_file = wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations" "          ")
-                wiz_stats_file = wizard_file.write(json.dumps(wiz.wizard_sheet))
+                wizard_file.write("Class = Wizard" "          ")
+                wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations" "          ")
+                wizard_file.write(json.dumps(wiz.wizard_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -188,13 +188,13 @@ def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
     if action == "1":
-        print(wiz.wizard_sheet)
+        print(player_class_filename)
         player_ui()
     if action == "2":
         print(player_path_filename)
         player_ui()
     if action == "3":
-        print("quarterstaff")
+        print(player_class_filename)
         player_ui()
     if action == "4":
         quit()
