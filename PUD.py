@@ -33,8 +33,8 @@ path_list = ["royalty", "peasant", "commoner"]
 player_filename = "Player Name"
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
-with open(player_filename, "w") as file:
-    file.write(player)
+with open(player_filename, "w") as player_file:
+    player_file.write(player)
     if player == "rules":
         print(RulesandHandbook.Rules)
     else:
@@ -44,13 +44,13 @@ print(class_list)
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
-    player_class_filename = "Player Class/Equipment"
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
+            player_class_filename = "Player Class/Equipment"
             with open(player_class_filename, "w") as wizard_file:
                 wizard_file.write("Class = Wizard" "          ")
                 wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations" "          ")
