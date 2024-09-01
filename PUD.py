@@ -8,6 +8,7 @@ import peasantintro
 import commonerintro
 import playerui
 import RulesandHandbook
+import json
 wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
@@ -43,7 +44,7 @@ print(class_list)
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
-    player_class_filename = input("Class Filename: ")
+    player_class_filename = input("Class/Equipment Filename: ")
     class_choice = input("what is your class?")
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
@@ -51,8 +52,9 @@ def choose_class():
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
             with open(player_class_filename, "w") as wizard_file:
-                wizard_file.write("Class = Wizard")
-                wizard_file.write(wiz.wizard_sheet)
+                wiz_class_file = wizard_file.write("Class = Wizard" "          ")
+                wiz_equipment_file = wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations" "          ")
+                wiz_stats_file = wizard_file.write(json.dumps(wiz.wizard_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -86,6 +88,8 @@ def choose_class():
 choose_class()
 
 # List of function paths intros. Need to fix and find a way to put on separate file at some point.
+
+player_path_filename = input("Path Filename: ")
 
 
 def are_you_ready_peasant():
@@ -187,7 +191,7 @@ def player_ui():
         print(wiz.wizard_sheet)
         player_ui()
     if action == "2":
-        print("royalty")
+        print(player_path_filename)
         player_ui()
     if action == "3":
         print("quarterstaff")
