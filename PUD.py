@@ -53,7 +53,7 @@ def choose_class():
             print("spell-casters don't last long here.")
             with open("Player Class Equipment", "w") as wizard_file:
                 wizard_file.write("Class = Wizard\n")
-                wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations\n")
+                wizard_file.write("quarterstaff, x3 torch, spellbook, robes, x10 rations, bedroll\n")
                 wizard_file.write(json.dumps(wiz.wizard_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
@@ -64,8 +64,10 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("another hero with a sword and shield in line for his death.")
-            with open(player_class_filename, "w") as warrior_file:
-                warrior_file.write("Class = Warrior")
+            with open("Player Class Equipment", "w") as warrior_file:
+                warrior_file.write("Class = Warrior\n")
+                warrior_file.write("axe, x3 torch, heavy armor, x10 rations, bedroll\n")
+                warrior_file.write(json.dumps(war.warrior_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -75,8 +77,10 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("don't go looking into my pockets.")
-            with open(player_class_filename, "w") as thief_file:
-                thief_file.write("Class = Thief")
+            with open("Player Class Equipment", "w") as thief_file:
+                thief_file.write("Class = Thief\n")
+                thief_file.write("dagger, x3 torch, light armor, x10 rations, bedroll\n")
+                thief_file.write(json.dumps(thief.thief_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -188,13 +192,13 @@ def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
     if action == "1":
-        print(player_class_filename)
+        print(player_name)
         player_ui()
     if action == "2":
         print(player_path_filename)
         player_ui()
     if action == "3":
-        print(player_class_filename)
+        print(player_class_equipment)
         player_ui()
     if action == "4":
         quit()
