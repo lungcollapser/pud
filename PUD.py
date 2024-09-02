@@ -30,15 +30,14 @@ class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
 
-player_filename = "Player Name"
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
-with open(player_filename, "w") as player_file:
+with open("Player Name", "w") as player_file:
     player_file.write(player)
-    if player == "rules":
-        print(RulesandHandbook.Rules)
-    else:
-        print("hmmmm", player, "huh?...very interesting.")
+if player == "rules":
+    print(RulesandHandbook.Rules)
+else:
+    print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
 
 
@@ -50,10 +49,9 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
-            player_class_filename = "Player Class/Equipment"
-            with open(player_class_filename, "w") as wizard_file:
-                wizard_file.write("Class = Wizard" "          ")
-                wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations" "          ")
+            with open("Player Class/Equipment", "w") as wizard_file:
+                wizard_file.write("Class = Wizard\n")
+                wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations\n")
                 wizard_file.write(json.dumps(wiz.wizard_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
