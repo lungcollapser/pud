@@ -29,6 +29,8 @@ commoner_pattern = re.compile(r"(?i)^.*commoner")
 class_list = ["wizard", "warrior", "thief"]
 path_list = ["royalty", "peasant", "commoner"]
 
+player_class_equipment = open("Player Class Equipment", "w")
+player_name = open("Player Name", "w")
 
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
@@ -49,7 +51,7 @@ def choose_class():
         yes_no = input("are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
-            with open("Player Class/Equipment", "w") as wizard_file:
+            with open("Player Class Equipment", "w") as wizard_file:
                 wizard_file.write("Class = Wizard\n")
                 wizard_file.write("quarterstaff, x3 torch, spellbook, light robes, x10 rations\n")
                 wizard_file.write(json.dumps(wiz.wizard_sheet))
