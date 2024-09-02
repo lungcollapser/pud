@@ -13,7 +13,6 @@ wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 play_ui = playerui.PlayerUi
-rules = RulesandHandbook.Rules
 
 
 wiz_pattern = re.compile(r"(?i).*wizard$")
@@ -37,10 +36,7 @@ print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDE
 player = input("what is your name?")
 with open("Player Name", "w") as player_file:
     player_file.write(player)
-if player == "rules":
-    print(RulesandHandbook.Rules)
-else:
-    print("hmmmm", player, "huh?...very interesting.")
+print("hmmmm", player, "huh?...very interesting.")
 print(class_list)
 
 
