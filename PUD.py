@@ -31,6 +31,7 @@ path_list = ["royalty", "peasant", "commoner"]
 
 player_class_equipment = open("Player Class Equipment", "w")
 player_name = open("Player Name", "w")
+player_path_filename = open("Player Path", "w")
 
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
 player = input("what is your name?")
@@ -92,8 +93,6 @@ def choose_class():
 choose_class()
 
 # List of function paths intros. Need to fix and find a way to put on separate file at some point.
-
-player_path_filename = input("Path Filename: ")
 
 
 def are_you_ready_peasant():
@@ -157,6 +156,9 @@ def which_path():
         yes_no = input("starting gold = 200. royalty? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("wealth is a shortcut to an early grave. watch your back.")
+            with open("Player Path", "w") as royalty_file:
+                royalty_file.write("Path = Royalty\n")
+                royalty_file.write("Starting Gold = 200")
             are_you_ready_royalty()
         elif re.search(no_pattern, yes_no):
             which_path()
@@ -166,6 +168,9 @@ def which_path():
         yes_no = input("starting gold = 5. peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("you'll be rolling in shit before you know it.")
+            with open("Player Path", "w") as peasant_file:
+                peasant_file.write("Path = Royalty\n")
+                peasant_file.write("Starting Gold = 200")
             are_you_ready_peasant()
         elif re.search(no_pattern, yes_no):
             which_path()
@@ -175,6 +180,9 @@ def which_path():
         yes_no = input("starting gold = 25. commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("ahhh, a perfectly normal and average life. how underwhelming.")
+            with open("Player Path", "w") as commoner_file:
+                commoner_file.write("Path = Royalty\n")
+                commoner_file.write("Starting Gold = 200")
             are_you_ready_commoner()
         elif re.search(no_pattern, yes_no):
             which_path()
@@ -192,13 +200,16 @@ def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
     if action == "1":
-        print(player_name)
+        read_name = open("Player Name", "r")
+        print(read_name.read())
         player_ui()
     if action == "2":
-        print(player_path_filename)
+        read_path = open("Player Path", "r")
+        print(read_path.read())
         player_ui()
     if action == "3":
-        print(player_class_equipment)
+        read_stats = open("Player Class Equipment", "r")
+        print(read_stats.read())
         player_ui()
     if action == "4":
         quit()
