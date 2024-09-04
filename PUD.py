@@ -1,4 +1,5 @@
 import re
+import fontstyle
 import random
 import WarriorCharacterSheet
 import ThiefCharacterSheet
@@ -25,15 +26,15 @@ royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
 
-class_list = ["wizard", "warrior", "thief"]
-path_list = ["royalty", "peasant", "commoner"]
+class_list = fontstyle.apply(["wizard", "warrior", "thief"], "bold")
+path_list = fontstyle.apply(["royalty", "peasant", "commoner"], "bold")
 
 player_class_equipment = open("Player Class Equipment", "w")
 player_name = open("Player Name", "w")
 player_path_filename = open("Player Path", "w")
 
 print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
-player = input("what is your name?")
+player = input("what is your ", fontstyle.apply("name?")
 with open("Player Name", "w") as player_file:
     player_file.write(player)
 print("hmmmm", player, "huh?...very interesting.")
