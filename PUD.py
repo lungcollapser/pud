@@ -33,8 +33,8 @@ player_class_equipment = open("Player Class Equipment", "w")
 player_name = open("Player Name", "w")
 player_path_filename = open("Player Path", "w")
 
-print("welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED")
-player = input("what is your ", fontstyle.apply("name?")
+print(fontstyle.apply("Welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED", "bold/italic/green"))
+player = input(fontstyle.apply("what is your name?", "italic"))
 with open("Player Name", "w") as player_file:
     player_file.write(player)
 print("hmmmm", player, "huh?...very interesting.")
@@ -43,10 +43,10 @@ print(class_list)
 
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
-    class_choice = input("what is your class?")
+    class_choice = input(fontstyle.apply("what is your class?", "italic"))
     if re.search(wiz_pattern, class_choice):
         print(wiz.wizard_sheet)
-        yes_no = input("are you sure? type yes or no.")
+        yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
             print("spell-casters don't last long here.")
             with open("Player Class Equipment", "w") as wizard_file:
@@ -59,7 +59,7 @@ def choose_class():
             choose_class()
     elif re.search(war_pattern, class_choice):
         print(war.warrior_sheet)
-        yes_no = input("are you sure? type yes or no.")
+        yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
             print("another hero with a sword and shield in line for his death.")
             with open("Player Class Equipment", "w") as warrior_file:
@@ -72,7 +72,7 @@ def choose_class():
             choose_class()
     elif re.search(thief_pattern, class_choice):
         print(thief.thief_sheet)
-        yes_no = input("are you sure? type yes or no.")
+        yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
             print("don't go looking into my pockets.")
             with open("Player Class Equipment", "w") as thief_file:
@@ -198,15 +198,15 @@ def player_ui():
     action = input("what would you like to do?")
     if action == "1":
         read_name = open("Player Name", "r")
-        print(read_name.read())
+        print(fontstyle.apply(read_name.read(), "bold"))
         player_ui()
     if action == "2":
         read_path = open("Player Path", "r")
-        print(read_path.read())
+        print(fontstyle.apply(read_path.read(), "bold"))
         player_ui()
     if action == "3":
         read_stats = open("Player Class Equipment", "r")
-        print(read_stats.read())
+        print(fontstyle.apply(read_stats.read(), "bold"))
         player_ui()
     if action == "4":
         quit()
