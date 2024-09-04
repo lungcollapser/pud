@@ -165,8 +165,8 @@ def which_path():
         if re.search(yes_pattern, yes_no):
             print("you'll be rolling in shit before you know it.")
             with open("Player Path", "w") as peasant_file:
-                peasant_file.write("Path = Royalty\n")
-                peasant_file.write("Starting Gold = 200")
+                peasant_file.write("Path = Peasant\n")
+                peasant_file.write("Starting Gold = 5")
             are_you_ready_peasant()
         elif re.search(no_pattern, yes_no):
             which_path()
@@ -177,8 +177,8 @@ def which_path():
         if re.search(yes_pattern, yes_no):
             print("ahhh, a perfectly normal and average life. how underwhelming.")
             with open("Player Path", "w") as commoner_file:
-                commoner_file.write("Path = Royalty\n")
-                commoner_file.write("Starting Gold = 200")
+                commoner_file.write("Path = Commoner\n")
+                commoner_file.write("Starting Gold = 25")
             are_you_ready_commoner()
         elif re.search(no_pattern, yes_no):
             which_path()
