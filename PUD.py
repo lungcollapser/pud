@@ -9,29 +9,33 @@ import commonerintro
 import playerui
 import RulesandHandbook
 import json
+
+# This section is to call classes from other files by importing them using variables.
 wiz = WizardCharacterSheet.Wizard
 thief = ThiefCharacterSheet.Thief
 war = WarriorCharacterSheet.Warrior
 play_ui = playerui.PlayerUi
 
-
+# This section uses RE(regular expressions) as a way of transforming common sayings in the game more accessible and flexible to the player.
 wiz_pattern = re.compile(r"(?i).*wizard$")
 thief_pattern = re.compile(r"(?i).*thief$")
 war_pattern = re.compile(r"(?i).*warrior$")
 yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)|(y)")
 no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
-
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
 
+# This code shows the class list and path list and applies fontstyle to make the text below bold.
 class_list = fontstyle.apply(["wizard", "warrior", "thief"], "bold")
 path_list = fontstyle.apply(["royalty", "peasant", "commoner"], "bold")
 
+# This code is here to open and create the files that store data that the player chooses throughout playing the game.
 player_class_equipment = open("Player Class Equipment", "w")
 player_name = open("Player Name", "w")
 player_path_filename = open("Player Path", "w")
 
+# This code is the beginning of the game. Pretty easy to understand.
 print(fontstyle.apply("Welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED", "bold/italic/green"))
 player = input(fontstyle.apply("what is your name?", "italic"))
 with open("Player Name", "w") as player_file:
@@ -191,7 +195,7 @@ def which_path():
 which_path()
 
 
-# This displays a "player ui" that the player can interact with at any point to view certain information regarding their character status.
+# This displays a "player ui" that the player can interact by typing in numbers at any point to view certain information regarding their character status.
 def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
