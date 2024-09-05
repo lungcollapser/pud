@@ -1,6 +1,5 @@
 import re
 import fontstyle
-import random
 import WarriorCharacterSheet
 import ThiefCharacterSheet
 import WizardCharacterSheet
@@ -37,7 +36,7 @@ print(fontstyle.apply("Welcome to PUD. Type in 'rules' to look at the games hand
 player = input(fontstyle.apply("what is your name?", "italic"))
 with open("Player Name", "w") as player_file:
     player_file.write(player)
-print("hmmmm", player, "huh?...very interesting.")
+print("hm", player, "huh?...very interesting.")
 print(class_list)
 
 
@@ -150,7 +149,7 @@ def which_path():
     print(path_list)
     choose_path = input("")
     if re.search(royalty_pattern, choose_path):
-        yes_no = input("starting gold = 200. royalty? are you sure? type yes or no.")
+        yes_no = input("gold = 200. royalty? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("wealth is a shortcut to an early grave. watch your back.")
             with open("Player Path", "w") as royalty_file:
@@ -162,7 +161,7 @@ def which_path():
         else:
             which_path()
     elif re.search(peasant_pattern, choose_path):
-        yes_no = input("starting gold = 5. peasant? are you sure? type yes or no.")
+        yes_no = input("gold = 5. peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
             print("you'll be rolling in shit before you know it.")
             with open("Player Path", "w") as peasant_file:
@@ -174,9 +173,9 @@ def which_path():
         else:
             which_path()
     elif re.search(commoner_pattern, choose_path):
-        yes_no = input("starting gold = 25. commoner? are you sure? type yes or no.")
+        yes_no = input("gold = 25. commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
-            print("ahhh, a perfectly normal and average life. how underwhelming.")
+            print("ah, a perfectly normal and average life. how underwhelming.")
             with open("Player Path", "w") as commoner_file:
                 commoner_file.write("Path = Commoner\n")
                 commoner_file.write("Starting Gold = 25")
@@ -190,29 +189,30 @@ def which_path():
 
 
 which_path()
-# List of function paths intros. Need to fix and find a way to put on separate file at some point.
 
 
+# This displays a "player ui" that the player can interact with at any point to view certain information regarding their character status.
 def player_ui():
     print(play_ui.player_ui)
     action = input("what would you like to do?")
+    # This displays the characters name.
     if action == "1":
         read_name = open("Player Name", "r")
-        print(fontstyle.apply(read_name.read(), "bold"))
+        print(fontstyle.apply(read_name.read(), "italic"))
         player_ui()
+    # This displays the characters path and gold.
     if action == "2":
         read_path = open("Player Path", "r")
-        print(fontstyle.apply(read_path.read(), "bold"))
+        print(fontstyle.apply(read_path.read(), "italic"))
         player_ui()
+    # This displays the characters class, inventory, and equipment.
     if action == "3":
         read_stats = open("Player Class Equipment", "r")
-        print(fontstyle.apply(read_stats.read(), "bold"))
+        print(fontstyle.apply(read_stats.read(), "italic"))
         player_ui()
+    # This allows the player to quit the game at any time.
     if action == "4":
         quit()
 
 
 player_ui()
-
-
-
