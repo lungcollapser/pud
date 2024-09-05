@@ -25,6 +25,9 @@ no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
+hurt_pattern = re.compile(r"(?i)^.*(kill)|(murder)|(hurt)|(injure)|(hit)|(bash)|(stab)|(death)|(break)|(damage)|(destroy)")
+move_pattern = re.compile(r"(?i)^.*(move)|(go)|(travel)")
+run_pattern = re.compile(r"(?i)^.*(run)|(jog)|(sprint)")
 
 # This code shows the class list and path list and applies fontstyle to make the text below bold.
 class_list = fontstyle.apply(["wizard", "warrior", "thief"], "bold")
@@ -196,9 +199,11 @@ which_path()
 
 
 # This displays a "player ui" that the player can interact by typing in numbers at any point to view certain information regarding their character status.
+action = input("what would you like to do?")
+
+
 def player_ui():
     print(play_ui.player_ui)
-    action = input("what would you like to do?")
     # This displays the characters name.
     if action == "1":
         read_name = open("Player Name", "r")
@@ -220,3 +225,4 @@ def player_ui():
 
 
 player_ui()
+
