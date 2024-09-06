@@ -1,8 +1,8 @@
 import re
 import fontstyle
-import WarriorCharacterSheet
-import ThiefCharacterSheet
-import WizardCharacterSheet
+import CellborneCharacterSheet
+import WretchCharacterSheet
+import PsyKinCharacterSheet
 import royaltyintro
 import peasantintro
 import commonerintro
@@ -11,15 +11,15 @@ import RulesandHandbook
 import json
 
 # This section is to call classes from other files by importing them using variables.
-wiz = WizardCharacterSheet.Wizard
-thief = ThiefCharacterSheet.Thief
-war = WarriorCharacterSheet.Warrior
+psy = PsyKinCharacterSheet.PsyKin
+wretch = WretchCharacterSheet.Wretch
+cell = CellborneCharacterSheet.CellBorne
 play_ui = playerui.PlayerUi
 
 # This section uses RE(regular expressions) as a way of transforming common sayings in the game more accessible and flexible to the player.
-wiz_pattern = re.compile(r"(?i).*wizard$")
-thief_pattern = re.compile(r"(?i).*thief$")
-war_pattern = re.compile(r"(?i).*warrior$")
+psy_pattern = re.compile(r"(?i).*psykin$|psy-kin")
+wretch_pattern = re.compile(r"(?i).*wretch$")
+cell_pattern = re.compile(r"(?i).*cell-borne$|cellborne")
 yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)|(y)")
 no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
@@ -30,7 +30,7 @@ move_pattern = re.compile(r"(?i)^.*(move)|(go)|(travel)")
 run_pattern = re.compile(r"(?i)^.*(run)|(jog)|(sprint)")
 
 # This code shows the class list and path list and applies fontstyle to make the text below bold.
-class_list = fontstyle.apply(["wizard", "warrior", "thief"], "bold")
+class_list = fontstyle.apply(["psy-kin", "cell-borne", "wretch"], "bold")
 path_list = fontstyle.apply(["royalty", "peasant", "commoner"], "bold")
 
 # This code is here to open and create the files that store data that the player chooses throughout playing the game.
@@ -50,41 +50,41 @@ print(class_list)
 # Function to ask the player what class they would like to choose based on certain stats.
 def choose_class():
     class_choice = input(fontstyle.apply("what is your class?", "italic"))
-    if re.search(wiz_pattern, class_choice):
-        print(wiz.wizard_sheet)
+    if re.search(psy_pattern, class_choice):
+        print(psy.psy_kin_sheet)
         yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
-            print("spell-casters don't last long here.")
-            with open("Player Class Equipment", "w") as wizard_file:
-                wizard_file.write("Class = Wizard\n")
-                wizard_file.write("quarterstaff, x3 torch, spellbook, robes, x10 rations, bedroll\n")
-                wizard_file.write(json.dumps(wiz.wizard_sheet))
+            print("brains is not something valued on this planet.")
+            with open("Player Class Equipment", "w") as psy_file:
+                psy_file.write("Class = Wizard\n")
+                psy_file.write("Ocular Visual Tome, 200tb usb drive, 1x litre of unfiltered water, 1lb of freshly cooked Cresher meat\n")
+                psy_file.write(json.dumps(psy.psy_kin_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
             choose_class()
-    elif re.search(war_pattern, class_choice):
-        print(war.warrior_sheet)
+    elif re.search(cell_pattern, class_choice):
+        print(cell.cell_borne_sheet)
         yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
-            print("another hero with a sword and shield in line for his death.")
-            with open("Player Class Equipment", "w") as warrior_file:
-                warrior_file.write("Class = Warrior\n")
-                warrior_file.write("axe, x3 torch, heavy armor, x10 rations, bedroll\n")
-                warrior_file.write(json.dumps(war.warrior_sheet))
+            print("keep track of your batteries, bot.")
+            with open("Player Class Equipment", "w") as cell_borne_file:
+                cell_borne_file.write("Class = Warrior\n")
+                cell_borne_file.write("Ion Rifle, 10x fully charged cells, binocular chip, various arm augmentations, 2 litres of oil\n")
+                cell_borne_file.write(json.dumps(cell.cell_borne_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
             choose_class()
-    elif re.search(thief_pattern, class_choice):
-        print(thief.thief_sheet)
+    elif re.search(wretch_pattern, class_choice):
+        print(wretch.wretch_sheet)
         yes_no = input(fontstyle.apply("are you sure? type yes or no.", "italic"))
         if re.search(yes_pattern, yes_no):
-            print("don't go looking into my pockets.")
-            with open("Player Class Equipment", "w") as thief_file:
-                thief_file.write("Class = Thief\n")
-                thief_file.write("dagger, x3 torch, light armor, x10 rations, bedroll\n")
-                thief_file.write(json.dumps(thief.thief_sheet))
+            print("your system BIOS is rather dubious.")
+            with open("Player Class Equipment", "w") as wretch_file:
+                wretch_file.write("Class = Thief\n")
+                wretch_file.write("Beam Dagger, 3x hacking tools, headlamp, PDA, raspberry pi, 5x moonpies, 1x litre of unfiltered water\n")
+                wretch_file.write(json.dumps(wretch.wretch_sheet))
         elif re.search(no_pattern, yes_no):
             choose_class()
         else:
@@ -156,36 +156,36 @@ def which_path():
     print(path_list)
     choose_path = input("")
     if re.search(royalty_pattern, choose_path):
-        yes_no = input("gold = 200. royalty? are you sure? type yes or no.")
+        yes_no = input("credits = 200. royalty? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
-            print("wealth is a shortcut to an early grave. watch your back.")
+            print("even the 'wealthy' face retribution.")
             with open("Player Path", "w") as royalty_file:
                 royalty_file.write("Path = Royalty\n")
-                royalty_file.write("Starting Gold = 200")
+                royalty_file.write("Credits = 200")
             are_you_ready_royalty()
         elif re.search(no_pattern, yes_no):
             which_path()
         else:
             which_path()
     elif re.search(peasant_pattern, choose_path):
-        yes_no = input("gold = 5. peasant? are you sure? type yes or no.")
+        yes_no = input("credits = 5. peasant? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
-            print("you'll be rolling in shit before you know it.")
+            print("digging in garbage for spare parts, are we?")
             with open("Player Path", "w") as peasant_file:
                 peasant_file.write("Path = Peasant\n")
-                peasant_file.write("Starting Gold = 5")
+                peasant_file.write("Credits = 5")
             are_you_ready_peasant()
         elif re.search(no_pattern, yes_no):
             which_path()
         else:
             which_path()
     elif re.search(commoner_pattern, choose_path):
-        yes_no = input("gold = 25. commoner? are you sure? type yes or no.")
+        yes_no = input("credits = 25. commoner? are you sure? type yes or no.")
         if re.search(yes_pattern, yes_no):
-            print("ah, a perfectly normal and average life. how underwhelming.")
+            print("between data fishers and server sweats, you're a sight for sore eyes.")
             with open("Player Path", "w") as commoner_file:
                 commoner_file.write("Path = Commoner\n")
-                commoner_file.write("Starting Gold = 25")
+                commoner_file.write("Credits = 25")
             are_you_ready_commoner()
         elif re.search(no_pattern, yes_no):
             which_path()

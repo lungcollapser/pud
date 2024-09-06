@@ -2,6 +2,6 @@ import fontstyle
 
 
 def royalty_intro():
-    print(fontstyle.apply("You awake to the sound of rustling footsteps.\nThe sleek marble furnishing of your quarters reflect the moonlight coming in from the window.\nYour weapon sits idly by next to your bedside table.\n"
-                          "The footsteps start echoing throughout the halls outside your room, getting closer and closer to your door.", "bold/italic"))
+    print(fontstyle.apply("Layers of luminescent gel seep off your body as it is raised up the platform.\nYour body is held tightly with metal clamps.\nAs your body rises, your vision becomes clear.\nYou are in your chambers.\n"
+                          "The clamps release, and you slide towards the floor.\nLoud shouting is heard outside your monochromatic grey door.", "bold/italic"))
 

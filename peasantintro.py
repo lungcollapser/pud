@@ -2,5 +2,6 @@ import fontstyle
 
 
 def peasant_intro():
-    print(fontstyle.apply("Raindrops peck your cheeks as the you look to the sky.\nYou scan the base of each cloud, seeing nothing but dark shadows in an eerie skyline.\nThe dirt has turned to mud, which as a result has turned your ass frigid.\n"
-          "Dozens of individuals pass you barely passing a glance, at the very most a scowl.\nIn your peripheral vision, there is a child peeking at your from an alleyway.\nThere face conveys fear, but curiosity.", "bold/italic"))
+    print(fontstyle.apply("Piles of garbage fall from nearly 10 stories above you.\nYou glance up, as do the others around you.\nIt's cold where you are.\nAs the hatch is opened, you feel the warm "
+                          "air coming through.\nAround you, piles of garbage lay, many strewn with lights charged using batteries that are quickly depleting.\nPeople stay crouched in these piles, protecting what is theirs.\n"
+                          "These is their homes.\n", "bold/italic"))
