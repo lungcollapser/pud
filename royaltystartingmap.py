@@ -7,5 +7,5 @@ class RoyaltyRoom:
         self.wall = wall
 
 
-royalty_room = RoyaltyRoom({"door", "storage container", "bed", "wall"})
+royalty_room = RoyaltyRoom("door", "storage container", "bed", "wall")
 
