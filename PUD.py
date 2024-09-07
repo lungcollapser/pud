@@ -7,7 +7,7 @@ import royaltyintro
 import peasantintro
 import commonerintro
 import playerui
-import RulesandHandbook
+import royaltymapobjects
 import json
 
 # This section is to call classes from other files by importing them using variables.
@@ -15,6 +15,10 @@ psy = PsyKinCharacterSheet.PsyKin
 wretch = WretchCharacterSheet.Wretch
 cell = CellborneCharacterSheet.CellBorne
 play_ui = playerui.PlayerUi
+royalty_door = royaltymapobjects.Door
+royalty_storage_container = royaltymapobjects.StorageContainer
+royalty_bed = royaltymapobjects.Bed
+
 
 # This section uses RE(regular expressions) as a way of transforming common sayings in the game more accessible and flexible to the player.
 psy_pattern = re.compile(r"(?i).*psykin$|psy-kin")
@@ -199,10 +203,10 @@ which_path()
 
 
 # This displays a "player ui" that the player can interact by typing in numbers at any point to view certain information regarding their character status.
-action = input("what would you like to do?")
 
 
 def player_ui():
+    action = input("what would you like to do?")
     print(play_ui.player_ui)
     # This displays the characters name.
     if action == "1":
