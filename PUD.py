@@ -1,5 +1,6 @@
 import re
 import fontstyle
+import RulesandHandbook
 import CellborneCharacterSheet
 import WretchCharacterSheet
 import PsyKinCharacterSheet
@@ -43,8 +44,11 @@ player_name = open("Player Name", "w")
 player_path_filename = open("Player Path", "w")
 
 # This code is the beginning of the game. Pretty easy to understand.
-print(fontstyle.apply("Welcome to PUD. Type in 'rules' to look at the games handbook. RECOMMENDED", "bold/italic/green"))
+print(fontstyle.apply("WELCOME TO PUD.\nType in 'rules' to look at the games handbook. RECOMMENDED FOR NEW PLAYERS", "bold/italic/green"))
 player = input(fontstyle.apply("what is your name?", "italic"))
+if player == "rules":
+    print(RulesandHandbook.rules_and_handbook())
+    player = input(fontstyle.apply("what is your name?", "italic"))
 with open("Player Name", "w") as player_file:
     player_file.write(player)
 print("hm", player, "huh?...very interesting.")
@@ -206,8 +210,8 @@ which_path()
 
 
 def player_ui():
-    action = input("what would you like to do?")
     print(play_ui.player_ui)
+    action = input("what would you like to do?")
     # This displays the characters name.
     if action == "1":
         read_name = open("Player Name", "r")
