@@ -4,7 +4,7 @@ class Door:
         self.health = health
 
 
-door = Door("A sleek door with no visible handle. A glossy button catches your eye to the right.", 100)
+door = Door("A sleek grey door with no visible handle. A glossy button catches your eye to the right.", 100)
 
 
 class StorageContainer:
