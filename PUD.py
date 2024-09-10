@@ -30,6 +30,7 @@ no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
+player_choice = "What would you like to do?"
 # Below is a list of possible standard implemented commands the player can choose from.
 damage_pattern = re.compile(r"(?i)^.*(kill)|(murder)|(hurt)|(injure)|(hit)|(bash)|(stab)|(death)|(break)|(damage)|(destroy)")
 move_pattern = re.compile(r"(?i)^.*(move)|(go)|(travel)")
@@ -211,32 +212,14 @@ def which_path():
 which_path()
 
 
-
 # This displays a "player ui" that the player can interact by typing in numbers at any point to view certain information regarding their character status.
+def gameplay_options():
+    input(player_choice)
+    if player_choice == "o":
+        playerui.player_ui()
 
 
-def player_ui():
-    print(play_ui.player_ui)
-    action = input("Type C to see character options.")
-    # This displays the characters name.
-    if action == "1":
-        read_name = open("Player Name", "r")
-        print(fontstyle.apply(read_name.read(), "italic"))
-        player_ui()
-    # This displays the characters path and gold.
-    if action == "2":
-        read_path = open("Player Path", "r")
-        print(fontstyle.apply(read_path.read(), "italic"))
-        player_ui()
-    # This displays the characters class, inventory, and equipment.
-    if action == "3":
-        read_stats = open("Player Class Equipment", "r")
-        print(fontstyle.apply(read_stats.read(), "italic"))
-        player_ui()
-    # This allows the player to quit the game at any time.
-    if action == "4":
-        quit()
+gameplay_options()
 
 
-player_ui()
 
