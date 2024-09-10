@@ -30,7 +30,7 @@ no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
-player_choice = "What would you like to do?"
+number_of_times = 10000
 # Below is a list of possible standard implemented commands the player can choose from.
 damage_pattern = re.compile(r"(?i)^.*(kill)|(murder)|(hurt)|(injure)|(hit)|(bash)|(stab)|(death)|(break)|(damage)|(destroy)")
 move_pattern = re.compile(r"(?i)^.*(move)|(go)|(travel)")
@@ -212,14 +212,24 @@ def which_path():
 which_path()
 
 
-# This displays a "player ui" that the player can interact by typing in numbers at any point to view certain information regarding their character status.
 def gameplay_options():
-    input(player_choice)
     if player_choice == "o":
         playerui.player_ui()
 
 
+def directions():
+    if re.search(r"(?i)^.*(go)|(run)|(walk)|(east)", player_choice):
+        print("to the east is my nuts")
+    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(west)", player_choice):
+        print("to the west is my nuts")
+    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(south)", player_choice):
+        print("to the west is my nuts")
+    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(north)", player_choice):
+        print("to the west is my nuts")
+
+while True:
+    player_choice = input("What would you like to do?")
+
+
 gameplay_options()
-
-
-
+directions()

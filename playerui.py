@@ -24,9 +24,6 @@ def player_ui():
         read_stats = open("Player Class Equipment", "r")
         print(fontstyle.apply(read_stats.read(), "italic"))
         player_ui()
-# This allows the player to continue their game.
-    if action == "4":
-        return 0
 # This allows the player to quit the game and terminate the program.
-    if action == "5":
+    if action == "4":
         quit()
