@@ -1,11 +1,6 @@
 import fontstyle
 
 
-class PlayerUi:
-
-    player_ui = {"name": 1, "path": 2, "stats/equipment": 3, "continue": 4, "quit": 5}
-
-
 def player_ui():
     print(player_ui)
     # This displays the characters name.
@@ -27,3 +22,8 @@ def player_ui():
 # This allows the player to quit the game and terminate the program.
     if action == "4":
         quit()
+
+
+class PlayerUi:
+
+    player_ui = {"name": 1, "path": 2, "stats/equipment": 3, "continue": 4, "quit": 5}

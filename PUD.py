@@ -22,9 +22,9 @@ royalty_bed = royaltymapobjects.Bed
 
 
 # This section uses RE(regular expressions) as a way of transforming common sayings in the game more accessible and flexible to the player.
-psy_pattern = re.compile(r"(?i).*psykin$|psy-kin")
+psy_pattern = re.compile(r"(?i).*(psykin)$|(psy-kin)$|(psy)$")
 wretch_pattern = re.compile(r"(?i).*wretch$")
-cell_pattern = re.compile(r"(?i).*cell-borne$|cellborne")
+cell_pattern = re.compile(r"(?i).*(cell-borne)$|(cellborne)$|(cell)$")
 yes_pattern = re.compile(r"(?i)^.*(yes)|(yup)|(y)")
 no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
@@ -212,16 +212,17 @@ def which_path():
 which_path()
 
 
-def player_choice():
-    player_choice == input("What would you like to do?")
-
-
 def gameplay_options():
     if player_choice == "o":
         playerui.player_ui()
 
 
 def directions():
+    while True:
+        try:
+            player_choice = input("What would you like to do?")
+        except directions():
+            print("Sorry, I do not understand.")
     if re.search(r"(?i)^.*(go)|(run)|(walk)|(east)", player_choice):
         print("to the east is my nuts")
     elif re.search(r"(?i)^.*(go)|(run)|(walk)|(west)", player_choice):
@@ -231,6 +232,8 @@ def directions():
     elif re.search(r"(?i)^.*(go)|(run)|(walk)|(north)", player_choice):
         print("to the west is my nuts")
 
-player
+
 gameplay_options()
 directions()
+
+
