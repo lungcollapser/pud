@@ -15,7 +15,6 @@ import json
 psy = PsyKinCharacterSheet.PsyKin
 wretch = WretchCharacterSheet.Wretch
 cell = CellborneCharacterSheet.CellBorne
-play_ui = playerui.PlayerUi
 royalty_door = royaltymapobjects.Door
 royalty_storage_container = royaltymapobjects.StorageContainer
 royalty_bed = royaltymapobjects.Bed
@@ -212,27 +211,29 @@ def which_path():
 which_path()
 
 
+def gameplay_options():
+    if player_choice == "o":
+        playerui.player_user_interface()
+
+
 def directions():
-    if re.search(r"(?i)^.*(go)|(run)|(walk)|(east)", player_choice):
+    if re.search(r"(?i)^.*(go east)|(run east)|(walk east)|(east)", player_choice):
         print("to the east is my nuts")
-    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(west)", player_choice):
+    elif re.search(r"(?i)^.*(go west)|(run west)|(walk west)|(west)", player_choice):
         print("to the west is my nuts")
-    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(south)", player_choice):
-        print("to the west is my nuts")
-    elif re.search(r"(?i)^.*(go)|(run)|(walk)|(north)", player_choice):
-        print("to the west is my nuts")
+    elif re.search(r"(?i)^.*(go south)|(run south)|(walk south)|(south)", player_choice):
+        print("to the south is my nuts")
+    elif re.search(r"(?i)^.*(go north)|(run north)|(walk north)|(north)", player_choice):
+        print("to the north is my nuts")
 
 
 while True:
-    player_choice = input("What would you like to do?")
-    if not directions():
+    player_choice = input(fontstyle.apply("What would you like to do?", "bold/red"))
+    if not directions() and gameplay_options():
         print("sorry, i do not understand.")
         continue
-
-
-def gameplay_options():
-    if player_choice == "o":
-        playerui.player_ui()
+    else:
+        continue
 
 
 gameplay_options()
