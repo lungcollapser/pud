@@ -212,17 +212,7 @@ def which_path():
 which_path()
 
 
-def gameplay_options():
-    if player_choice == "o":
-        playerui.player_ui()
-
-
 def directions():
-    while True:
-        try:
-            player_choice = input("What would you like to do?")
-        except directions():
-            print("Sorry, I do not understand.")
     if re.search(r"(?i)^.*(go)|(run)|(walk)|(east)", player_choice):
         print("to the east is my nuts")
     elif re.search(r"(?i)^.*(go)|(run)|(walk)|(west)", player_choice):
@@ -233,7 +223,20 @@ def directions():
         print("to the west is my nuts")
 
 
+while True:
+    player_choice = input("What would you like to do?")
+    if not directions():
+        print("sorry, i do not understand.")
+        continue
+
+
+def gameplay_options():
+    if player_choice == "o":
+        playerui.player_ui()
+
+
 gameplay_options()
 directions()
+
 
 
