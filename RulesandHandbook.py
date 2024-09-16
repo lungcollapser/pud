@@ -14,6 +14,8 @@ def rules_and_handbook():
           "6. >Help< This will open up a menu that allows you to look at the handbook, or the all important ASK FOR ADVICE feature (may bring upon an untamed amount of excitement and joy)\n"
           "7. >Roll< This command is used for rolling dice in the way of checks. Just like dnd, you will occasionally have a chance to show off your abilities whether it be through brains, brawn, ect\n"
           "There are 7 different possible rolls you can choose from; 1d2, 1d4, 1d6, 1d8, 1d10, 1d12, and 1d20. If you are lost, don't worry! The game will explain more of this later on.\n"
+          "8. >Inspect< This command allows you to inspect objects in the world. Can be good for getting a description of an item before interacting with it.\n"
+          "9. >Interact< This command allows you to interact with certain objects in the world.\n"
           "\nNext we will go into the definition of each stat:\n"
           "Strength.This is going to govern your overall ability to lift heavy objects, throw a mean right hook, and is used when rolling a Strength check.\n"
           "Dexterity. This is going to govern your movement speed, flexibility when maneuvering on foot, and is used when rolling a Dexterity check.\n"

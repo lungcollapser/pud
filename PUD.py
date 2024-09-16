@@ -29,12 +29,8 @@ no_pattern = re.compile(r"(?i)^.*(no)|(nope)|(n)")
 royalty_pattern = re.compile(r"(?i)^.*royalty")
 peasant_pattern = re.compile(r"(?i)^.*peasant")
 commoner_pattern = re.compile(r"(?i)^.*commoner")
-number_of_times = 10000
 # Below is a list of possible standard implemented commands the player can choose from.
 damage_pattern = re.compile(r"(?i)^.*(kill)|(murder)|(hurt)|(injure)|(hit)|(bash)|(stab)|(death)|(break)|(damage)|(destroy)")
-move_pattern = re.compile(r"(?i)^.*(move)|(go)|(travel)")
-run_pattern = re.compile(r"(?i)^.*(run)|(jog)|(sprint)")
-directions_pattern = re.compile(r"(?i)^.*(north)|(south)|(east)|(west)")
 survival_food_pattern = re.compile(r"(?i)^.*(eat)|(consume)|(chew)|(devour)|(hungry)")
 survival_drink_pattern = re.compile(r"(?i)^.*(drink)|(swallow)|(gulp)|(thirsty)")
 survival_sleep_pattern = re.compile(r"(?i)^.*(sleep)|(snooze)|(tired)|(nap)")
@@ -216,20 +212,22 @@ def gameplay_options():
         playerui.player_user_interface()
 
 
-def directions():
+def directions_royalty():
     if re.search(r"(?i)^.*(go east)|(run east)|(walk east)|(east)", player_choice):
-        print("to the east is my nuts")
+        print("You go east and find yourself in front of a storage container.")
+        if re.search(r"(?i)^.*(inspect storage container)|(inspect storage)", player_choice):
+            print(royaltymapobjects.storage_container)
     elif re.search(r"(?i)^.*(go west)|(run west)|(walk west)|(west)", player_choice):
-        print("to the west is my nuts")
+        print("You go west and find yourself in front of a door.")
     elif re.search(r"(?i)^.*(go south)|(run south)|(walk south)|(south)", player_choice):
-        print("to the south is my nuts")
+        print("You go south and find your bed.")
     elif re.search(r"(?i)^.*(go north)|(run north)|(walk north)|(north)", player_choice):
-        print("to the north is my nuts")
+        print()
 
 
 while True:
     player_choice = input(fontstyle.apply("What would you like to do?", "bold/red"))
-    if not directions() and gameplay_options():
+    if not directions_royalty() and gameplay_options():
         print("sorry, i do not understand.")
         continue
     else:
@@ -237,7 +235,7 @@ while True:
 
 
 gameplay_options()
-directions()
+directions_royalty()
 
 
 
